@@ -1,0 +1,12 @@
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+.env
+.env.local
+.vite/
+dist/
+*.log
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
