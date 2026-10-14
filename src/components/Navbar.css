@@ -1,0 +1,361 @@
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  min-height: 76px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 12px 5%;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.035);
+  font-family: inherit;
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left {
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #16803d;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo-icon {
+  font-size: 25px;
+}
+
+.logo strong {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.logo-city {
+  padding-left: 7px;
+  border-left: 1px solid #dddddd;
+  color: #777777;
+  font-size: 12px;
+}
+
+.nav-center {
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+}
+
+.delivery-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.delivery-label {
+  color: #222222;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.delivery-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 260px;
+  overflow: hidden;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.location-arrow {
+  flex-shrink: 0;
+  font-size: 9px;
+  color: #16803d;
+}
+
+.nav-right {
+  flex-shrink: 0;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border: 1px solid #eeeeee;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #333333;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: #f5faf6;
+  border-color: #cde8d4;
+}
+
+.admin-btn {
+  color: #16803d;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.user-name {
+  max-width: 125px;
+  overflow: hidden;
+  color: #333333;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  padding: 9px 11px;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #555555;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background: #fff4f4;
+  border-color: #ffd6d6;
+  color: #c62828;
+}
+
+/* Cart button and quantity badge */
+.cart-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-width: 44px;
+  min-height: 43px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid #d9eadf;
+  border-radius: 10px;
+  background: #f3faf5;
+  color: #16803d;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.cart-btn:hover {
+  background: #e7f5eb;
+}
+
+.cart-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  line-height: 1;
+}
+
+/* Plain number badge, not a coin-style emoji */
+.cart-count {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  box-sizing: border-box;
+  padding: 0 5px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  background: #16803d;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.cart-total {
+  color: #16803d;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .navbar {
+    gap: 12px;
+    padding-right: 3%;
+    padding-left: 3%;
+  }
+
+  .nav-right {
+    gap: 7px;
+  }
+
+  .logo strong {
+    font-size: 18px;
+  }
+
+  .logo-city {
+    font-size: 11px;
+  }
+
+  .nav-btn {
+    padding: 9px;
+  }
+
+  .delivery-location {
+    max-width: 190px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .navbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 8px;
+    padding: 12px 14px;
+  }
+
+  .nav-left {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .logo strong {
+    font-size: 19px;
+  }
+
+  .logo-city {
+    font-size: 10px;
+  }
+
+  .nav-center {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    padding-top: 9px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .delivery-info {
+    gap: 4px;
+  }
+
+  .delivery-label {
+    font-size: 12px;
+  }
+
+  .delivery-location {
+    max-width: calc(100vw - 35px);
+    font-size: 12px;
+  }
+
+  .nav-right {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 7px;
+  }
+
+  .nav-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .user-menu {
+    gap: 5px;
+  }
+
+  .logout-btn {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .cart-btn {
+    min-width: 42px;
+    min-height: 40px;
+    padding: 7px;
+  }
+
+  .cart-icon {
+    font-size: 20px;
+  }
+
+  .cart-total {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .logo {
+    gap: 5px;
+  }
+
+  .logo strong {
+    font-size: 17px;
+  }
+
+  .logo-city {
+    padding-left: 5px;
+    font-size: 9px;
+  }
+
+  .nav-right {
+    gap: 5px;
+  }
+
+  .nav-btn {
+    padding: 7px;
+  }
+
+  .logout-btn {
+    padding: 7px;
+  }
+}

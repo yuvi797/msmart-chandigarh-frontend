@@ -1,13 +1,12 @@
 
-/* =========================
-   GROCERY HOMEPAGE
-========================= */
+/* =========================================
+   MSMART GROCERY HOMEPAGE
+========================================= */
 
 .grocery-home {
   --green: #16803d;
   --green-dark: #105b2c;
   --green-light: #e9f7e9;
-  --yellow: #f7df49;
   --ink: #202b21;
   --muted: #748074;
   --border: #e8ede6;
@@ -18,6 +17,7 @@
   padding: 26px 32px 56px;
   color: var(--ink);
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 .grocery-home *,
@@ -32,7 +32,9 @@
   font: inherit;
 }
 
-/* HERO BANNER */
+/* =========================================
+   HERO
+========================================= */
 
 .grocery-hero {
   position: relative;
@@ -40,8 +42,8 @@
   align-items: center;
   justify-content: space-between;
   min-height: 365px;
+  padding: 40px 5%;
   overflow: hidden;
-  padding: 44px 7%;
   border-radius: 25px;
   background: linear-gradient(
     115deg,
@@ -53,7 +55,8 @@
 
 .hero-copy {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  flex: 1;
   max-width: 580px;
 }
 
@@ -63,15 +66,16 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: var(--green);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1.5px;
-  color: var(--green);
+  letter-spacing: 1.4px;
 }
 
 .hero-dot {
   width: 8px;
   height: 8px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 0 4px #16803d1c;
@@ -101,16 +105,17 @@
 .hero-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 18px;
   margin-top: 25px;
   padding: 14px 22px;
   border: 0;
   border-radius: 10px;
   background: var(--green);
-  color: white;
+  color: #fff;
   font-weight: 750;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .hero-cta:hover {
@@ -132,13 +137,17 @@
   font-weight: 650;
 }
 
-/* HERO DECORATION */
+/* =========================================
+   HERO PHOTOS
+========================================= */
 
 .hero-art {
   position: relative;
   flex: 0 0 330px;
-  height: 290px;
+  height: 320px;
+  min-width: 0;
   margin-left: 20px;
+  isolation: isolate;
 }
 
 .hero-orbit {
@@ -160,93 +169,110 @@
   height: 210px;
 }
 
-.hero-basket {
+.hero-photo {
   position: absolute;
-  top: 76px;
-  left: 85px;
-  display: grid;
-  width: 150px;
-  height: 150px;
-  place-items: center;
-  border-radius: 35px;
-  background: #ffffffaa;
-  box-shadow: 0 20px 50px #47783a20;
-  font-size: 94px;
+  z-index: 2;
+  overflow: hidden;
+  padding: 6px;
+  border: 1px solid #ffffffc9;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 45px #264b2724;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.hero-photo:hover {
+  z-index: 5;
+  box-shadow: 0 22px 50px #264b2733;
+}
+
+.hero-photo-fruits {
+  top: 8px;
+  left: 13%;
+  width: 175px;
+  height: 185px;
   transform: rotate(-7deg);
 }
 
-.hero-fruit {
-  position: absolute;
-  z-index: 2;
-  display: grid;
-  width: 65px;
-  height: 65px;
-  place-items: center;
-  border: 1px solid #ffffffb5;
-  border-radius: 21px;
-  background: #ffffffdf;
-  box-shadow: 0 10px 25px #47783a18;
-  font-size: 37px;
-  animation: grocery-float 4s ease-in-out infinite;
+.hero-photo-fruits:hover {
+  transform: rotate(-2deg) translateY(-5px);
 }
 
-.hero-fruit-apple {
-  top: 10px;
-  left: 55px;
+.hero-photo-vegetables {
+  top: 85px;
+  right: 0;
+  width: 150px;
+  height: 160px;
+  transform: rotate(6deg);
 }
 
-.hero-fruit-banana {
-  top: 32px;
-  right: 17px;
-  animation-delay: 0.6s;
+.hero-photo-vegetables:hover {
+  transform: rotate(2deg) translateY(-5px);
 }
 
-.hero-fruit-avocado {
-  right: 5px;
-  bottom: 39px;
-  animation-delay: 1s;
+.hero-photo-bread {
+  right: 17%;
+  bottom: 0;
+  width: 125px;
+  height: 125px;
+  transform: rotate(-5deg);
 }
 
-.hero-fruit-carrot {
-  bottom: 9px;
-  left: 66px;
-  animation-delay: 0.3s;
+.hero-photo-bread:hover {
+  transform: rotate(0deg) translateY(-5px);
 }
 
-.hero-fruit-broccoli {
-  top: 130px;
-  left: 5px;
-  animation-delay: 1.3s;
+.hero-photo-milk {
+  bottom: 5px;
+  left: 4%;
+  width: 105px;
+  height: 115px;
+  transform: rotate(5deg);
+}
+
+.hero-photo-milk:hover {
+  transform: rotate(0deg) translateY(-5px);
 }
 
 .hero-fresh-tag {
   position: absolute;
-  right: 3px;
-  bottom: 4px;
-  display: flex;
+  z-index: 6;
+  top: 6px;
+  right: 0;
+  display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 11px 14px;
-  border: 1px solid white;
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0 8px 24px #47783a15;
-  color: var(--green-dark);
-  font-size: 12px;
+  justify-content: center;
+  gap: 5px;
+  width: auto;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid #edf2e9;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 18px #00000012;
+  color: #176b35;
+  font-size: 10px;
   font-weight: 750;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-@keyframes grocery-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-7px);
-  }
+.hero-fresh-tag span {
+  font-size: 11px;
+  line-height: 1;
 }
 
-/* BENEFITS */
+/* =========================================
+   BENEFITS
+========================================= */
 
 .benefit-strip {
   display: grid;
@@ -262,7 +288,13 @@
   padding: 17px 20px;
   border: 1px solid var(--border);
   border-radius: 14px;
-  background: white;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.benefit-item:hover {
+  border-color: #d5e7d7;
+  box-shadow: 0 5px 18px #16803d0a;
 }
 
 .benefit-icon {
@@ -291,7 +323,9 @@
   font-size: 11px;
 }
 
-/* CATALOG HEADER */
+/* =========================================
+   CATALOG HEADER
+========================================= */
 
 .catalog-heading {
   margin-bottom: 23px;
@@ -300,8 +334,8 @@
 .catalog-heading h2 {
   margin: 9px 0 7px;
   font-size: clamp(24px, 3vw, 32px);
-  letter-spacing: -1px;
   font-weight: 800;
+  letter-spacing: -1px;
 }
 
 .catalog-heading p {
@@ -311,7 +345,9 @@
   line-height: 1.6;
 }
 
-/* SEARCH AND SORT */
+/* =========================================
+   SEARCH AND SORT
+========================================= */
 
 .catalog-toolbar {
   display: flex;
@@ -331,7 +367,7 @@
   border: 1px solid #e0e8dd;
   border-radius: 12px;
   background: #f8faf6;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .grocery-search:focus-within {
@@ -385,13 +421,15 @@
   border: 1px solid var(--border);
   border-radius: 10px;
   outline-color: var(--green);
-  background: white;
+  background: #fff;
   color: var(--ink);
   font-size: 13px;
   cursor: pointer;
 }
 
-/* PRODUCT GRID */
+/* =========================================
+   PRODUCT RESULTS AND GRID
+========================================= */
 
 .catalog-results {
   margin-top: 25px;
@@ -417,14 +455,17 @@
   font-size: 12px;
 }
 
+/* One grid definition; breakpoints below control columns. */
 .grocery-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  gap: 16px;
   align-items: stretch;
 }
 
-/* LOADING SKELETONS */
+/* =========================================
+   LOADING SKELETONS
+========================================= */
 
 .product-skeleton {
   display: flex;
@@ -435,7 +476,7 @@
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 15px;
-  background: white;
+  background: #fff;
 }
 
 .skeleton-image,
@@ -485,7 +526,9 @@
   }
 }
 
-/* EMPTY AND ERROR STATES */
+/* =========================================
+   EMPTY AND ERROR STATES
+========================================= */
 
 .catalog-message {
   display: flex;
@@ -525,16 +568,19 @@
   border: 0;
   border-radius: 9px;
   background: var(--green);
-  color: white;
+  color: #fff;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .retry-button:hover {
   background: var(--green-dark);
 }
 
-/* PROMOTIONAL BANNER */
+/* =========================================
+   PROMOTIONAL BANNER
+========================================= */
 
 .grocery-promo {
   display: flex;
@@ -571,31 +617,45 @@
   font-size: 75px;
 }
 
-/* TABLETS */
+/* =========================================
+   TABLETS
+========================================= */
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
   .grocery-home {
     padding: 22px 24px 44px;
   }
 
   .grocery-hero {
-    padding: 38px 5%;
+    padding-right: 4%;
+    padding-left: 4%;
   }
 
   .hero-art {
-    flex-basis: 275px;
-    transform: scale(0.9);
-    transform-origin: center right;
-    margin-left: 0;
+    flex-basis: 290px;
+    margin-left: 10px;
+  }
+
+  .hero-photo-fruits {
+    left: 10%;
+    width: 160px;
+    height: 170px;
+  }
+
+  .hero-photo-vegetables {
+    width: 135px;
+    height: 145px;
   }
 
   .grocery-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
   }
 }
 
-/* MOBILE */
+/* =========================================
+   MOBILE AND SMALL TABLETS
+========================================= */
 
 @media (max-width: 760px) {
   .grocery-home {
@@ -618,6 +678,12 @@
   }
 
   .hero-copy > p {
+    font-size: 13px;
+  }
+
+  .hero-cta {
+    margin-top: 20px;
+    padding: 12px 17px;
     font-size: 13px;
   }
 
@@ -658,6 +724,18 @@
     line-height: 1.5;
   }
 
+  .catalog-heading {
+    margin-bottom: 18px;
+  }
+
+  .catalog-heading h2 {
+    font-size: 25px;
+  }
+
+  .catalog-heading p {
+    font-size: 13px;
+  }
+
   .catalog-toolbar {
     align-items: stretch;
     flex-direction: column;
@@ -666,6 +744,7 @@
 
   .grocery-search {
     width: 100%;
+    min-height: 48px;
   }
 
   .sort-control {
@@ -677,9 +756,26 @@
     max-width: 260px;
   }
 
+  .catalog-results {
+    margin-top: 22px;
+  }
+
+  .results-heading {
+    margin-bottom: 14px;
+  }
+
+  .results-heading h3 {
+    font-size: 19px;
+  }
+
   .grocery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .product-skeleton {
+    padding: 10px;
+    border-radius: 12px;
   }
 
   .grocery-promo {
@@ -692,7 +788,9 @@
   }
 }
 
-/* SMALL PHONES */
+/* =========================================
+   SMALL PHONES
+========================================= */
 
 @media (max-width: 380px) {
   .grocery-home {
@@ -714,11 +812,7 @@
   }
 
   .grocery-grid {
-    gap: 8px;
-  }
-
-  .product-skeleton {
-    padding: 9px;
+    gap: 9px;
   }
 
   .benefit-item {
@@ -728,9 +822,23 @@
   .results-heading h3 {
     font-size: 18px;
   }
+
+  .grocery-promo {
+    padding: 20px 15px;
+  }
+
+  .grocery-promo h2 {
+    font-size: 21px;
+  }
+
+  .promo-emoji {
+    font-size: 42px;
+  }
 }
 
-/* ACCESSIBILITY */
+/* =========================================
+   ACCESSIBILITY
+========================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .grocery-home *,
@@ -740,497 +848,5 @@
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-
-/* ===== Modern Grocery Product Cards ===== */
-
-.product-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: 10px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid #eeeeee;
-  border-radius: 16px;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-  border-color: #d6eadc;
-  box-shadow: 0 8px 24px rgba(20, 60, 30, 0.09);
-}
-
-.img-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: #f7faf6;
-  border-radius: 12px;
-}
-
-.img-wrap img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 12px;
-  object-fit: contain;
-  transition: transform 0.25s ease;
-}
-
-.product-card:hover .img-wrap img {
-  transform: scale(1.06);
-}
-
-.discount-badge {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  padding: 6px 8px;
-  color: #fff;
-  background: #16803c;
-  border-radius: 0 0 9px 0;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-}
-
-.wishlist-btn {
-  position: absolute;
-  z-index: 2;
-  top: 7px;
-  right: 7px;
-  display: grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  color: #444;
-  background: #fff;
-  border: 1px solid #eeeeee;
-  border-radius: 50%;
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.wishlist-btn:hover {
-  color: #e0445b;
-  background: #fff1f3;
-}
-
-.delivery-time {
-  align-self: flex-start;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 10px;
-  padding: 4px 7px;
-  color: #535c52;
-  background: #f3f5f1;
-  border-radius: 5px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-}
-
-.product-info {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.product-info h3 {
-  display: -webkit-box;
-  min-height: 38px;
-  margin: 9px 0 4px;
-  overflow: hidden;
-  color: #202520;
-  font-size: 14px;
-  font-weight: 650;
-  line-height: 1.4;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.unit {
-  margin: 0 0 10px;
-  color: #7a807a;
-  font-size: 12px;
-}
-
-.price-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px;
-  margin-top: auto;
-  margin-bottom: 12px;
-}
-
-.price-details {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.price {
-  color: #202520;
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.mrp {
-  color: #929792;
-  font-size: 12px;
-  text-decoration: line-through;
-}
-
-.saving-label {
-  color: #16803c;
-  font-size: 10px;
-  font-weight: 700;
-}
-
-.product-action {
-  display: flex;
-  justify-content: flex-end;
-  min-height: 36px;
-}
-
-.add-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  min-height: 36px;
-  padding: 8px 12px;
-  color: #16803c;
-  background: #f0faf2;
-  border: 1px solid #16803c;
-  border-radius: 9px;
-  font-size: 12px;
-  font-weight: 800;
-  cursor: pointer;
-  transition:
-    color 0.2s ease,
-    background 0.2s ease;
-}
-
-.add-btn:hover:not(:disabled) {
-  color: #fff;
-  background: #16803c;
-}
-
-.add-btn:disabled,
-.add-btn.out {
-  color: #999;
-  background: #f3f3f3;
-  border-color: #e5e5e5;
-  cursor: not-allowed;
-}
-
-.qty-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  min-height: 36px;
-  color: #fff;
-  background: #16803c;
-  border: 1px solid #16803c;
-  border-radius: 9px;
-  overflow: hidden;
-}
-
-.qty-box button {
-  width: 36px;
-  min-height: 34px;
-  color: #fff;
-  background: transparent;
-  border: 0;
-  font-size: 20px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.qty-box button:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.qty-box button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.qty-box span {
-  font-size: 13px;
-  font-weight: 800;
-}
-
-/* Responsive product grid */
-.grocery-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
-}
-
-@media (max-width: 1100px) {
-  .grocery-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-  }
-}
-
-@media (max-width: 760px) {
-  .grocery-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .product-card {
-    padding: 8px;
-    border-radius: 12px;
-  }
-
-  .product-info h3 {
-    font-size: 12px;
-  }
-
-  .price {
-    font-size: 14px;
-  }
-
-  .saving-label {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .grocery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-}
-
-/* ===== REAL GROCERY HERO IMAGES ===== */
-
-.grocery-hero {
-  overflow: hidden;
-}
-
-.hero-art {
-  position: relative;
-  min-width: 0;
-  min-height: 360px;
-  isolation: isolate;
-}
-
-.hero-photo {
-  position: absolute;
-  z-index: 2;
-  overflow: hidden;
-  padding: 6px;
-  background: #fff;
-  border: 1px solid rgba(45, 90, 45, 0.08);
-  border-radius: 24px;
-  box-shadow: 0 18px 45px rgba(38, 75, 39, 0.14);
-  transition: transform 250ms ease, box-shadow 250ms ease;
-}
-
-.hero-photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 18px;
-}
-
-.hero-photo:hover {
-  z-index: 6;
-  box-shadow: 0 22px 50px rgba(38, 75, 39, 0.2);
-}
-
-.hero-photo-fruits {
-  top: 12px;
-  left: 19%;
-  width: 190px;
-  height: 205px;
-  transform: rotate(-7deg);
-}
-
-.hero-photo-fruits:hover {
-  transform: rotate(-2deg) translateY(-5px);
-}
-
-.hero-photo-vegetables {
-  top: 100px;
-  right: 1%;
-  width: 165px;
-  height: 175px;
-  transform: rotate(7deg);
-}
-
-.hero-photo-vegetables:hover {
-  transform: rotate(2deg) translateY(-5px);
-}
-
-.hero-photo-bread {
-  bottom: 0;
-  right: 19%;
-  width: 145px;
-  height: 145px;
-  transform: rotate(-5deg);
-}
-
-.hero-photo-bread:hover {
-  transform: rotate(0deg) translateY(-5px);
-}
-
-.hero-photo-milk {
-  bottom: 12px;
-  left: 9%;
-  width: 125px;
-  height: 135px;
-  transform: rotate(6deg);
-}
-
-.hero-photo-milk:hover {
-  transform: rotate(0deg) translateY(-5px);
-}
-
-.hero-fresh-tag {
-  position: absolute !important;
-
-  top: 15px !important;
-  right: 5px !important;
-
-  width: auto !important;
-  height: 30px !important;
-  min-height: 30px !important;
-  max-height: 30px !important;
-
-  padding: 0 12px !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-
-  gap: 5px;
-
-  background: #ffffff;
-  color: #176b35;
-
-  border-radius: 999px;
-
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-
-  font-size: 10px !important;
-  font-weight: 700;
-
-  line-height: 1 !important;
-  white-space: nowrap;
-
-  z-index: 100 !important;
-}
-
-.hero-fresh-tag span {
-  font-size: 11px !important;
-  line-height: 1 !important;
-}
-
-@media (max-width: 768px) {
-  .hero-art {
-    min-height: 310px;
-    margin-top: 18px;
-  }
-
-  .hero-photo-fruits {
-    top: 18px;
-    left: 19%;
-    width: 155px;
-    height: 165px;
-  }
-
-  .hero-photo-vegetables {
-    top: 105px;
-    right: 1%;
-    width: 125px;
-    height: 135px;
-  }
-
-  .hero-photo-bread {
-    right: 17%;
-    bottom: 0;
-    width: 110px;
-    height: 115px;
-  }
-
-  .hero-photo-milk {
-    left: 7%;
-    bottom: 4px;
-    width: 90px;
-    height: 105px;
-  }
-
- @media (max-width: 768px) {
-  .hero-fresh-tag {
-    top: 8px !important;
-    right: 5px !important;
-
-    height: 27px !important;
-    min-height: 27px !important;
-    max-height: 27px !important;
-
-    padding: 0 10px !important;
-    font-size: 9px !important;
-  }
-
-  .hero-fresh-tag span {
-    font-size: 10px !important;
-  }
-}
-}
-
-@media (max-width: 420px) {
-  .hero-art {
-    min-height: 270px;
-  }
-
-  .hero-photo-fruits {
-    left: 15%;
-    width: 135px;
-    height: 145px;
-  }
-
-  .hero-photo-vegetables {
-    top: 90px;
-    width: 105px;
-    height: 115px;
-  }
-
-  .hero-photo-bread {
-    right: 15%;
-    width: 95px;
-    height: 100px;
-  }
-
-  .hero-photo-milk {
-    width: 78px;
-    height: 90px;
   }
 }

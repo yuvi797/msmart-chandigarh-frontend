@@ -1,56 +1,124 @@
+
+import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
   const { cart, addToCart, updateQty } = useCart();
+  const [imageError, setImageError] = useState(false);
 
-  const cartItem = cart.find((c) => c._id === product._id);
+  const cartItem = cart.find(
+    (item) => item._id === product._id
+  );
+
   const qty = cartItem?.qty || 0;
+  const price = Number(product.price) || 0;
+  const mrp = Number(product.mrp) || 0;
 
   const discount =
-    product.mrp > product.price
-      ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
+    mrp > price && mrp > 0
+      ? Math.round(((mrp - price) / mrp) * 100)
       : 0;
 
-  return (
-    <div className="product-card">
-      {discount > 0 && <span className="discount-badge">{discount}% OFF</span>}
+  const outOfStock =
+    product.stock !== undefined &&
+    Number(product.stock) <= 0;
 
-      <div className="img-wrap">
-        <img
-          src={product.image || "https://via.placeholder.com/200"}
-          alt={product.name}
-        />
+  return (
+    <article className="product-card">
+      <div className="product-image-area">
+        {discount > 0 && (
+          <span className="product-discount">
+            {discount}% OFF
+          </span>
+        )}
+
+        {outOfStock && (
+          <span className="product-stock-label">
+            Sold out
+          </span>
+        )}
+
+        {!imageError && product.image ? (
+          <img
+            className="product-image"
+            src={product.image}
+            alt={product.name}
+            loading="lazy"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="product-image-placeholder">
+            <span>No image available</span>
+          </div>
+        )}
       </div>
 
-      <div className="delivery-time">⚡ 10 MINS</div>
+      <div className="product-details">
+        <div className="product-delivery">
+          <span className="delivery-dot" />
+          10 MIN DELIVERY
+        </div>
 
-      <h3>{product.name}</h3>
-      <p className="unit">{product.unit}</p>
+        <h3 className="product-name" title={product.name}>
+          {product.name}
+        </h3>
 
-      <div className="price-row">
-        <div>
-          <span className="price">₹{product.price}</span>
-          {product.mrp > product.price && (
-            <span className="mrp">₹{product.mrp}</span>
+        <p className="product-unit">
+          {product.unit || "1 unit"}
+        </p>
+
+        <div className="product-bottom">
+          <div className="product-pricing">
+            <span className="product-price">
+              ₹{price.toFixed(0)}
+            </span>
+
+            {mrp > price && (
+              <span className="product-mrp">
+                ₹{mrp.toFixed(0)}
+              </span>
+            )}
+          </div>
+
+          {outOfStock ? (
+            <button
+              className="product-add-button product-add-disabled"
+              disabled
+            >
+              Sold out
+            </button>
+          ) : qty === 0 ? (
+            <button
+              className="product-add-button"
+              onClick={() => addToCart(product)}
+              aria-label={`Add ${product.name} to cart`}
+            >
+              Add
+            </button>
+          ) : (
+            <div className="product-quantity">
+              <button
+                type="button"
+                onClick={() => updateQty(product._id, qty - 1)}
+                aria-label={`Remove one ${product.name}`}
+              >
+                −
+              </button>
+
+              <span>{qty}</span>
+
+              <button
+                type="button"
+                onClick={() => updateQty(product._id, qty + 1)}
+                aria-label={`Add one ${product.name}`}
+              >
+                +
+              </button>
+            </div>
           )}
         </div>
       </div>
-
-      {product.stock <= 0 ? (
-        <button className="add-btn out" disabled>
-          Out of Stock
-        </button>
-      ) : qty === 0 ? (
-        <button className="add-btn" onClick={() => addToCart(product)}>
-          ADD
-        </button>
-      ) : (
-        <div className="qty-box">
-          <button onClick={() => updateQty(product._id, qty - 1)}>−</button>
-          <span>{qty}</span>
-          <button onClick={() => updateQty(product._id, qty + 1)}>+</button>
-        </div>
-      )}
-    </div>
+    </article>
   );
 }
