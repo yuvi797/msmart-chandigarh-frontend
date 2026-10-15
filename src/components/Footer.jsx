@@ -52,7 +52,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="tel:+919999999999">📱 +91 99999 99999</a>
+              <a href="tel:+917973155164">📱 +91  7973155164</a>
             </li>
           </ul>
         </div>

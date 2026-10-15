@@ -1674,3 +1674,80 @@ body {
 .product-form select:hover {
   border-color: var(--green-light);
 }
+/* ========= FORGOT PASSWORD / OTP ========= */
+.auth-subtitle {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: -6px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.auth-subtitle strong {
+  color: var(--green-dark);
+  font-weight: 700;
+}
+
+.otp-input {
+  font-size: 24px !important;
+  text-align: center;
+  letter-spacing: 12px;
+  font-weight: 700 !important;
+  font-family: "Courier New", monospace !important;
+  padding: 16px !important;
+  background: linear-gradient(135deg, var(--cream), #fff) !important;
+  border: 2px solid var(--gold) !important;
+}
+.otp-input:focus {
+  border-color: var(--green) !important;
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15) !important;
+}
+
+.resend-row {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 4px 0;
+}
+.resend-btn {
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green-dark);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.resend-btn:hover:not(:disabled) {
+  background: var(--green-bg);
+}
+.resend-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.success-box {
+  text-align: center;
+  padding: 40px 32px;
+}
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  animation: popIn 0.5s ease;
+}
+@keyframes popIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.success-box h2 {
+  color: var(--green-dark);
+  font-family: "Playfair Display", serif;
+  margin-bottom: 8px;
+}
+.success-box p {
+  color: var(--text-muted);
+  font-size: 14px;
+}

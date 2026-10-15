@@ -249,12 +249,12 @@ export default function Login() {
               <Link to="/register">Create account</Link>
             </p>
 
-            <div className="auth-support">
+            {/* <div className="auth-support">
               Need help?{" "}
               <a href="mailto:msmartchandigarh@gmail.com">
                 msmartchandigarh@gmail.com
               </a>
-            </div>
+            </div> */}
 
           </div>
         </section>
